@@ -4,3 +4,7 @@ If you wrote any code (python / QuPath / any other language), comment it well, a
 
 If you did literature survey, then put it here as well.
 
+
+**Presentation #2** (Week 4)
+- Conducted literature review of characteristics of C-MIL
+
