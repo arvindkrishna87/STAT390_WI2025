@@ -1,6 +1,13 @@
-Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
-
-If you wrote any code (python / QuPath / any other language), comment it well, and put it here, along with a Readme file describing the code. If the code is meant to be useful to other people, put instructions in the Readme file on how to use it. You will get extra credit if many people use your code!
-
-If you did literature survey, then put it here as well.
-
+Overview: 
+Analyzed two different literature articles surrounding the usage of machin learning model in classifying cancer, compared the usage of different algorithms and structures that other researcher haveused and analyzed their performances. Applied those literature articles to our current issues and propose potential insights and challenges.
+Researched additional two medical related articles arounding risk factors, characteristics, and cormorbidity with C-MIL that can potentially bringing into the classification model design.
+Organized findings and knowledge into presentation slide 26-28
+Details:
+My primary research focused on how other researchers selecting machine learning architecture and algothims for cancer classification, essentially noticing what they looked for and discovered for best-performing model. One of the article focused on lung cancer, and the other one focused on eye cancer. I have discovered both model used CNNs netowrk in someaway and realized over 90% accuracy. The only difference is that the eye cancer used CNNs alone, and the lung cancer used CNNs for feature selection and combined with SVM. 
+I have noticed that the eye cancer model used data augmentation such as rotating, noise addition, and zoom to reduce reliance on training data and overfitting. I also noticed that both articles mentioned that CNNs require high quality and quantity of training data to work best, so these are something that we can take into consideration. Additionally, both models have employed multiple models to compare or combine, so we could also potentially consider that.
+My secondary research focused on the health perspective on the C-MIL model and algothims. I looked for potential risk factors such as race, eye color, age, and characteristics of C-MIL to discover potential information we can feed into the algothims. Potentially they can flag out high risk-population for more thorough analysis or things like that. I also noticed there is source mentioned that C-MIL need noticing lesion location for accurate diagnosis, so this should also put into account.
+Source: 
+Risk factors for eye cancer | Ocular melanoma risk. (n.d.). American Cancer Society. https://www.cancer.org/cancer/types/eye-cancer/causes-risks-prevention/risk-factors.html
+Whittington, Carli. Bresler, Scott. Simon, Caroline. (2024, Jan). Melanocytic lesions of the conjunctiva: an up-to-date review. Diagnostic Histopathology, 30(1), pp37-59, https://www.diagnostichistopathology.co.uk/article/S1756-2317(23)00165-2/fulltext
+Shafi, I., Din, S., Khan, A., Díez, I. T., Casanova, R. D. J. P., Pifarre, K. T., & Ashraf, I. (2022, Nov). An Effective Method for Lung Cancer Diagnosis from CT Scan Using Deep Learning-Based Support Vector Network. Cancers, 14(21), 5457. https://doi.org/10.3390/cancers14215457
+Santos-Bustos, Nguyen, Binh. Espitia, Helbert. (2022, Nov). Towards automated eye cancer classification via VGG and ResNet networks using transfer learning. Engineering Sciences and Technology. vol(35). https://doi.org/10.1016/j.jestch.2022.101214
