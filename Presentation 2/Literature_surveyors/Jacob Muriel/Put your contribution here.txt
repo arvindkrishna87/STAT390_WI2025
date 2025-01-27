@@ -4,3 +4,16 @@ If you wrote any code (python / QuPath / any other language), comment it well, a
 
 If you did literature survey, then put it here as well.
 
+With regards to the question about why we should use images with a patch size of a power of 2, I looked into the consequences of not using an image with a patch size of a power of 2.
+
+The main answer that I could find related to the computational abilities around images with and without powers of 2. It seems that CPU and GPU memory architectures are often organized in powers of 2, which suggests that powers of 2 would be optimal for computational and memory purposes. Thus, anything other than a power of 2 may not be optimal. (source: https://pmc.ncbi.nlm.nih.gov/articles/PMC4977982/#abstract1)
+- It was difficult to figure out exactly how much worse it would be to use a non power of 2, however one forum post said that he experienced up to a 30% performance drop using a non power of 2 (source: https://gamedev.stackexchange.com/questions/7927/should-i-use-textures-not-sized-to-a-power-of-2)
+- That said, it may be possible that these concerns are diminishing as GPUs get more advanced, as they are likely to process computations quicker, and the negative effects of using one over the other may not be too dramatic.
+
+The next consequence that I found was that computers may internally convert an image to a power of 2, which would take up some memory and time in a way that may not be ideal
+- Also, when re-sizing an image, some data may be lost in translation if the image doesn't map evenly to the new dimension.
+
+The last thing I could find may be more dependent on the type of model we choose to use, as if we use non-standard dimensions throughout our model development there may be issues with pooling and striding layers in the model
+- And additional padding may be necessary to deal with these issues
+
+That said, these issues may not mean too much in the grand scheme of our project. I kept finding sources that said it would be best to tailor the images to our data/problem at hand over trying to reduce computational complexity. The first issue really seems to be the most relevant, as the other two may deend on the modeling techniques that we use, and if the only problem with it is that it may take some more time and use more power/memory, it may certainly be worth looking into using patch sizes that are not powers of 2.
