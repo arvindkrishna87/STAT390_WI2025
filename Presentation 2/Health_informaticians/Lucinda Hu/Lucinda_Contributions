@@ -1,11 +1,17 @@
 Overview: 
 Analyzed two different literature articles surrounding the usage of machin learning model in classifying cancer, compared the usage of different algorithms and structures that other researcher haveused and analyzed their performances. Applied those literature articles to our current issues and propose potential insights and challenges.
 Researched additional two medical related articles arounding risk factors, characteristics, and cormorbidity with C-MIL that can potentially bringing into the classification model design.
-Organized findings and knowledge into presentation slide 26-28
+Organized findings and knowledge into presentation slide 26, 27 and 28
 Details:
-My primary research focused on how other researchers selecting machine learning architecture and algothims for cancer classification, essentially noticing what they looked for and discovered for best-performing model. One of the article focused on lung cancer, and the other one focused on eye cancer. I have discovered both model used CNNs netowrk in someaway and realized over 90% accuracy. The only difference is that the eye cancer used CNNs alone, and the lung cancer used CNNs for feature selection and combined with SVM. 
-I have noticed that the eye cancer model used data augmentation such as rotating, noise addition, and zoom to reduce reliance on training data and overfitting. I also noticed that both articles mentioned that CNNs require high quality and quantity of training data to work best, so these are something that we can take into consideration. Additionally, both models have employed multiple models to compare or combine, so we could also potentially consider that.
-My secondary research focused on the health perspective on the C-MIL model and algothims. I looked for potential risk factors such as race, eye color, age, and characteristics of C-MIL to discover potential information we can feed into the algothims. Potentially they can flag out high risk-population for more thorough analysis or things like that. I also noticed there is source mentioned that C-MIL need noticing lesion location for accurate diagnosis, so this should also put into account.
+My primary research focused on how other researchers selecting machine learning architecture and algothims for cancer classification, essentially noticing what they looked for and discovered for best-performing model. 
+One of the article focused on lung cancer, and the other one focused on eye cancer. I have discovered both model used CNNs netowrk in someaway and realized over 90% accuracy. The only difference is that the eye cancer used CNNs alone, and the lung cancer used CNNs for feature selection and combined with SVM. 
+I have noticed that the eye cancer model used data augmentation such as rotating, noise addition, and zoom to reduce reliance on training data and overfitting. 
+I also noticed that both articles mentioned that CNNs require high quality and quantity of training data to work best, so these are something that we can take into consideration. 
+Additionally, both models have employed multiple models to compare or combine, so we could also potentially consider that.
+My secondary research focused on the health perspective on the C-MIL model and algothims. 
+I looked for potential risk factors such as race, eye color, age, and characteristics of C-MIL to discover potential information we can feed into the algothims. 
+Potentially they can flag out high risk-population for more thorough analysis or things like that. 
+I also noticed there is source mentioned that C-MIL need noticing lesion location for accurate diagnosis, so this should also put into account.
 
 Source: 
 Risk factors for eye cancer | Ocular melanoma risk. (n.d.). American Cancer Society. https://www.cancer.org/cancer/types/eye-cancer/causes-risks-prevention/risk-factors.html
