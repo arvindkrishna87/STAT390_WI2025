@@ -1,0 +1,28 @@
+Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
+
+If you wrote any code (python / QuPath / any other language), comment it well, and put it here, along with a Readme file describing the code. If the code is meant to be useful to other people, put instructions in the Readme file on how to use it. You will get extra credit if many people use your code!
+
+If you did literature survey, then put it here as well.
+-----------------------------------------------------------------------
+
+Presentation 2:
+
+Focused on the question: Why Powers of 2?
+
+Found and presented empirical evidence to help answer the question. Empirical research: “Effect of patch size and network architecture on a convolutional neural network approach for automatic segmentation of OCT retinal layers”
+https://pmc.ncbi.nlm.nih.gov/articles/PMC6033561/#r40 
+
+Organized and presented the relevant results from the study:
+
+-The study explores the impact of varying patch sizes and CNN architectures on the segmentation of retinal layers based on cross-sectional patches of the ocular tissue from OCT images. 
+
+-The article acknowledges that certain CNN architectures were “originally designed and tested to classify small 32x32 color images.” Yet, they make no mention of the specific benefits of using patch sizes in powers of 2, but rather seem to be referring to the relatively small patch size.
+
+-However, the dimensions were adapted to 33x33 and 65x65 to ensure that a central pixel in the patch could align  with the focal area of interest, allowing the model to capture sufficient surrounding context while keeping computational costs manageable. The model with the  adjusted patch size seemed to perform just as well or better in all architectures that were tested.
+
+-In conclusion, the study found that larger patch sizes generally resulted in better ability to identify retinal layers because they captured more of the surrounding tissue. For larger patches like 65x65, network architecture adjustments were necessary to handle the increased input size effectively, but smaller changes in patch size did not have a significant impact. This experiment may suggest that the notion of patch sizes in powers of 2 is effectively irrelevant.
+
+Also helped out on other slides throughout the slide deck.
+
+
+
