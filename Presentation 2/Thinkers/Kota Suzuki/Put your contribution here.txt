@@ -1,6 +1,48 @@
-Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
+I spent the last two weeks familiarizing myself with Alyssa's patching code to then
+make necessary adjustments to fix one issues. The issue that came up with Alyssa's code was that it 
+generalized really poorly to tissue slices with varying epithelium width. To fix this, we decided to alter her code to 
+dynamically change the `initial_size` parameter of her patches depending on the epithelium width. 
 
-If you wrote any code (python / QuPath / any other language), comment it well, and put it here, along with a Readme file describing the code. If the code is meant to be useful to other people, put instructions in the Readme file on how to use it. You will get extra credit if many people use your code!
+To do this, I wrote three additional functions within Alyssa's code: 
+`determine_orientation`, `calculate_epithelium_width`, and `compute_epithelium_widths`
 
-If you did literature survey, then put it here as well.
+`determine_orientation` takes the epithelium mask as an input and determines whether the orientation is vertical or horizontal.
+Depending on the orientation of the slice, the way I calculate width slightly changes. 
 
+`calculate_epithelium_width` takes the index of a row or column (depending on orientation), the epithelium mask itself, 
+and the orientation. If the orientation of the slice is vertical, we are interested in calculating the width of 
+horizontal slices. Since the mask consists of either zero or some nonzero number depending on the color of the pixels, 
+the function loops over the the mask to caluclate the maximum number of consecutive nonzero numbers in the binary array, 
+which represents the width of the epithelium in that slice. 
+
+For example, let's say this is the binary mask: 
+
+0 0 0 0 255
+0 0 255 255 255
+
+if we call the function as such: calculate_epithelium_width(row_or_col=1, mask=non_black_white_mask, orientation="vertical"),
+the following happens: 
+slice_mask = mask[0, :] -> [0, 0, 255, 255, 255]
+binary_slice = [0, 0, 1, 1, 1]
+max_width = 3 
+
+`compute_epithelium_widths` exists entirely to iterate over all columns or rows of the mask to return the list of widths
+in a Numpy array. This helps me calculate the distribution of the widths which helps with the following: 
+
+    all_widths = compute_epithelium_widths(non_black_white_mask, tissue_orientation)
+
+    q1 = np.percentile(all_widths, 25)  
+    q2 = np.percentile(all_widths, 50)  
+    q3 = np.percentile(all_widths, 75)
+
+    if epithelium_width < q1:
+        initial_size = 3  
+    elif epithelium_width < q2:
+        initial_size = 5  
+    elif epithelium_width < q3:
+        initial_size = 8  
+    else:
+        initial_size = 10 
+
+While this is definitely still a work in progress, we figured out a way to dynamically change the `initial_shape` parameter 
+so that Alyssa's patching code can work with tissue slices that have varying width throughout the slice.
