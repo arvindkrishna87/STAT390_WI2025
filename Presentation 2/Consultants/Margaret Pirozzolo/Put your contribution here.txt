@@ -1,6 +1,4 @@
-Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
+First, I asked about Eli's patching algorithm. 
+On the website, I wrote out the tilting of patches alogrithms. This included a little bit about how Aryaman apporached tiltin patches, and the regression idea posed by Krish. I went through the pros and cons of each.
 
-If you wrote any code (python / QuPath / any other language), comment it well, and put it here, along with a Readme file describing the code. If the code is meant to be useful to other people, put instructions in the Readme file on how to use it. You will get extra credit if many people use your code!
-
-If you did literature survey, then put it here as well.
-
+When we presented Monday, we got many notes. After splitting up tasks, Olivia and I tag-teamed the automation page of the website. I wrote the general overview of automation. I delved into Kyla's code -- its challenges and efficiencies. I posted on ED to see what issues people were having. I also updated the epithelium detection section and made sure it reflected the issues that happened with it last quarter. Finally, I wrote the conclusion of that page. 
