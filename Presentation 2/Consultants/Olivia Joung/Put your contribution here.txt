@@ -1,6 +1,4 @@
-Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
+For Monday's progress report, I primarily worked on helping to brainstorm pros/cons for Alyssa's and Aryaman's code (multiple of us helped with this), and I also added/started the actual pros/cons tables for Alyssa's, Aryaman's, and Eli's code on the "Patching" section of the website. Additionally, I updated the "About page" so as to include information about our current quarter rather than the fall. 
 
-If you wrote any code (python / QuPath / any other language), comment it well, and put it here, along with a Readme file describing the code. If the code is meant to be useful to other people, put instructions in the Readme file on how to use it. You will get extra credit if many people use your code!
-
-If you did literature survey, then put it here as well.
+For Wednesday, I worked with Margaret on writing up the "Automation" page of the website, in which we detailed our current automation procedures and how we aim on improving them in the future. Specifically, I covered Cara's method for slice extraction, briefly referring to its logic by referring to the more detailed explanation described in "Step 1" before going into specific areas of improvement based on our class' experience doing Presentation 1. I also added the section detailing our current automation methodology for tissue matching.
 
