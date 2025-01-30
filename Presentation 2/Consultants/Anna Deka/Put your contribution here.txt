@@ -1,6 +1,7 @@
-Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
+This week, I worked on examining the pros/cons of Alyssa's algorithm and adding the key questions that the Thinkers and Literature Survey team were working on to the homepage. 
 
-If you wrote any code (python / QuPath / any other language), comment it well, and put it here, along with a Readme file describing the code. If the code is meant to be useful to other people, put instructions in the Readme file on how to use it. You will get extra credit if many people use your code!
+One quick change I made was updating the page title in the header to reflect the current year and remove the quarter as we discussed on Monday. On the homepage, I also added the key questions and the approach that the lit surveyors and thinkers took to answering these questions. This was based on each teams presentations and the sources that they referenced.  
 
-If you did literature survey, then put it here as well.
+For the pros/cons table on Alyssas code, I referenced her ReadMe, the comments made on her notebook, and reached out to the Thinkers to see what challenges they had encountered since they were directly working with her code this week. I also considered what we had talked about in class regarding complexity and the best approach for covering the width of the epithelium. Finally, I updated the pros/cons table on the website under the patching page.  
 
+Our team also came up with some suggestions for improving the work logistics. 
