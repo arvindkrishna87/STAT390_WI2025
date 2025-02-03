@@ -1,0 +1,8 @@
+This week, I worked on examining the pros/cons of Alyssa's algorithm and adding the key questions that the Thinkers and Literature Survey team were working on to the homepage. 
+ 
+One quick change I made was updating the page title in the header to reflect the current year and remove the quarter as we discussed on Monday. On the homepage, I also added the key questions and the approach that the lit surveyors and thinkers took to answering these questions. This was based on each teams presentations and the sources that they referenced. I essentially summarized the approach they took for each slide and attached the relevant links.
+
+For the pros/cons table on Alyssas code, I referenced her ReadMe, the comments made on her notebook, and reached out to the Thinkers to see what challenges they had encountered since they were directly working with her code this week. I also considered what we had talked about in class regarding complexity and the best approach for covering the width of the epithelium. Finally, I updated the pros/cons table on the website under the patching page. I also quickly created the first 3 slides in the deck for the presentaiton. 
+
+Our team also came up with some suggestions for improving the work logistics all together. 
+
