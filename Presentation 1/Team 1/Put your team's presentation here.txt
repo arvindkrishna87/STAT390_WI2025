@@ -1,6 +1,0 @@
-Objective achieved! 
-
-We successfully matched every Sheffield case and uploaded the .tif files into OneDrive. 
-
-We did overcome a couple of challenges that we incorporated into slides here: 
-https://docs.google.com/presentation/d/16SR_BmWgcMNBHswBqH2wj8FkN7BY8gcfPwh8AgW10jc/edit?usp=sharing

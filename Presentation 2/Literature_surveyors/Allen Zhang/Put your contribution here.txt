@@ -1,3 +1,0 @@
-Week 2:
-
-Conducted a literature review to address the question: "How do researchers determine the optimal number of patches?" This included creating a post on the QuPath forum, which received 1 response as of January 27. https://forum.image.sc/t/optimal-number-of-patches/107600
