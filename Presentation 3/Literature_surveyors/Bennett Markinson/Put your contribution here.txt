@@ -1,51 +1,126 @@
-Researched, analyzed, and presented 4 articles relating to the question Why is the patch shape taken as a square in tissue image analysis, machine learning?
+I tackled the first question for our objectives this week which was : 1. The reasons for square patches on slides 6 & 7, like streamlined convolution, parameter sharing, simplified pooling operations, etc.,  aren't clear. Can you explain these with an example? On slide 8, the reason given in the last line, "fit the image structure better" isn't clear. In our problem, the rectangular patch may better capture the pattern that determines the class. Should we use a rectangular patch?
+I also answered the feedback from last week's presentation which was: "1. Squares are preferred because they provide streamlined convolutional operations, efficient parameter sharing, etc., but not sure what this means! I think we should dig deep to be clear. When explanining this to the class, it may be best to consider an example, and show the application of all these operations on a square patch and a rectangular patch, and then compare the benefits of a square patch."
 
-Researched about uniform patch size and the current benefits for using square patches:
-https://pmc.ncbi.nlm.nih.gov/articles/PMC5265243/
+I created the following slides and notes to help answer:
 
-Slides info includesl
-Square patches are typically used because uniform patch shapes helps computational efficiency and consistent feature extraction: [6]
-Aligns with grid structure of images
-Uniformity ensures that all patches contribute equally to the classification task
-Important to avoid distortion or bias introduced by irregular shapes
-Article uses example of laparoscopic surgeries
-Uses square patching
-Achieved 98.4% in tissue classification.
+Slide 1: Expansion of Streamlined Convolutional Operations
+Slide Info:
+What are Streamlined Convolutional Operations
+Convolutions are the core operation in Convolutional Neural Networks (CNNs). A convolutional layer applies small, learnable filters (or kernels) over the input image to extract spatial features, such as edges, textures, or patterns.
+Square vs Rectangle
+CNN filters are typically square because they maintain uniform coverage of the spatial dimensions (height and width).
+Square:  the sliding window approach covers the image uniformly without gaps or overlaps that would distort the spatial relationships.
+Rectangle: patches can lead to uneven coverage, as the filter may not align symmetrically along both dimensions. (Ex: applying a 3 x  3 filter on a 48 x 64 patch might leave unprocessed edges in the longer dimension or require padding
+Isotropic Feature Extraction: Square patches ensure that filters treat all directions (horizontal, vertical, diagonal) equally. rectangular patches can introduce directional bias, as the filter might overemphasize features along one axis
+The sliding window operation works optimally when the patch and filter share symmetry. 
 
-Additional info: Multispectral imaging for superior tissue differentiation compared to RGB imaging
-article discusses a method for intraoperative tissue classification using multispectral image patches for computer-assisted laparoscopic surgeries
+Additional notes:
+1: These filters slide across the image in a grid-like manner, creating feature maps that highlight the presence of specific features.
 
-Researched about the use of rectangle patch size in similar medical problems and whether using non square patch sizing was effective:
-https://ieeexplore.ieee.org/document/7848208
-
-Slide info:
-Study found that used rectangular patches in fundus images for detecting diabetic retinopathy [7]
-Rectangular patches have been used instead of square patches before
-Texture, color models, and stats measures extracted from 48x64 pixel rectangular patches 
-High sensitivity and specificity for detecting hard exudates
-Challenges in distinguishing hemorrhages due to minor color differences
-In this study, it was more practical to use rectangular patches as it fit the image structure better
-
-Additional info:
-Features such as texture, color models, and statistical measures are extracted from 48×64 pixel rectangular patches to classify normal, hemorrhage, and hard exudate regions.
-
-Finally researched about an alternative AI called patchAI that automatically analyes a problem and decides which patch size would be optimal. Could be very helpful for our problem:
-
-https://www.mdpi.com/2414-4088/6/12/111
-
-Slide info:
-patchIT is a tool for creating image patches tailored for different image processing tasks  [8]
-Customizable patch size, shape, and overlap to meet needs
-Streamlines patch creation and effective feature extraction while being computationally efficient.
-requires two parameters: the input image and the patch size
-Used for object detection and medical imaging
-We could use this for our problem to test if other patch sizes may be optimal for our data
+Slide 2: Expansion of Parameter Sharing
+Slide Info: What is Parameter Sharing
+Parameter sharing is a mechanism in CNNs where the same filter weights are applied across the entire input image. This reduces the number of learnable parameters, improving computational efficiency and mitigating overfitting.
+Square vs Rectangle
+Square patches allow uniform sharing of parameters across height and width. This symmetry ensures that the model learns features like lines, edges, or textures consistently in all directions.
+Rectangular patches, on the other hand, may require different filters for the longer and shorter dimensions.
+Parameter sharing in square patches ensures that features (e.g., edges or curves) learned in one region can generalize to other regions.
+With rectangular patches, the disparity in dimensions might cause the model to prioritize certain features (e.g., vertical elongations in 48 x 64 patches), reducing its ability to generalize
+How It May Lead to Overfitting
+Rectangular patches increase the complexity of the model, as the filters might need to adjust for different aspect ratios, leading to potential overfitting, especially with limited data.
+Fewer parameters mean less risk of overfitting. Square patches minimize the parameter count while still effectively covering the input space
+Industry Standards - Squares !
 
 Additional info:
-They provide an alternative representation of the image as a set of partial local sub-images (patches) which is a vital preprocessing step in many image processing applications. In this paper a new software tool called patchIT is presented providing an integrated framework suitable for the systematic and automatized extraction of patches from images based on user defined geometrical and spatial criteria
+Square v Rect Second bullet: For example, detecting horizontal features in a 128 x 256 patch might need different weights than vertical features, increasing the number of parameters and breaking the uniformity.
+Key Benefits of Parameter Sharing:
+	•	Reduced Learnable Parameters:
+	•	Instead of learning a unique set of parameters for every pixel or region, the same filter (3 x 3 kernal) is applied across the input.
+	•	This reduces the total number of parameters significantly, making the model computationally efficient and easier to train.
+	•	Improved Generalization:
+	•	The model learns spatially invariant features, such as edges, textures, or shapes, which can appear anywhere in the image.
+	•	For example, an edge detected in the top-left corner should also be detected in the bottom-right corner using the same filter.
 
-patchIT is a tool designed for extracting image patches tailored to different image processing and analysis tasks. It allows users to customize the size, shape, and overlap of patches to suit various applications like object recognition and texture analysis. The tool integrates preprocessing features to normalize input images and optimize patch extraction. By creating patches systematically it makes sure the data is prepared efficient and is compatible with machine learning models, enhancing performance in applications such as medical imaging, object detection, and feature extraction.
+Square Patches:
+
+	•	Uniform Parameter Sharing:
+	•	In square patches (256 x 256), filters can move symmetrically across both dimensions (height and width). This symmetry ensures consistent feature extraction, as the same weights are applied uniformly.
+	•	For example, an edge filter detecting horizontal or vertical lines will perform equally well in all parts of the patch due to the equal dimensions.
+	•	Isotropic Feature Learning:
+	•	The model learns features (edges, curves, and textures) that are invariant to orientation or aspect ratio. This enhances generalization to unseen data.
+
+Rectangular Patches:
+
+	•	Asymmetric Parameter Sharing:
+	•	Rectangular patches (48 x 64) create a disparity between the height and width. Filters may need to adjust their behavior depending on the dimension.
+	•	For example:
+	•	Horizontal filters might need more parameters to process the longer dimension.
+	•	Vertical filters may require fewer parameters due to the shorter dimension.
+	•	Directional Bias:
+	•	The model might prioritize features aligned with the longer dimension
+	•	Increased Complexity:
+	•	Different dimensions may necessitate different filter designs, increasing the number of learnable parameters. This can strain the model, especially with limited training data.
+
+Slide 3: Diabetic Retinopathy Example
+
+Slide Info:
+Overview of Problem
+Diabetic retinopathy is characterized by lesions, microaneurysms (small round red dots), hard exudates (yellowish deposits caused by fluid leakage), and hemorrhages. Accurate detection of these features is critical for early diagnosis and treatment.
+Blood vessel analysis is a cornerstone of fundus image interpretation for detecting and diagnosing eye diseases such as diabetic retinopathy, glaucoma, and hypertensive retinopathy. Key features include Vessel Tortuosity, Branching Patterns. Vessel Thickness
+Square Benefits
+Square patches ensure that the circular features (microaneurysms) remain proportionally represented across the patch.
+Contextual features (e.g., adjacent blood vessels) are captured without distortion, preserving spatial relationships critical for classification.
+Retinal vessels, lesions, and exudates do not follow a strict directional pattern.
+A square patch ensures equal importance is given to vertical, horizontal, and diagonal features.
+Rectangle Benefits
+When Features are Elongated in a Dominant Direction: Retinal blood vessels could be elongated in fundus images. A rectangular patch aligned along vessel direction could improve segmentation accuracy. (Other ex like licencse plates or bar codes)
+When Capturing Larger Structures with Fewer Patches:Some DR-related abnormalities (e.g., large hemorrhages, optic disc swelling) may span larger areas. A wider rectangular patch may capture these features more efficiently.
+How Each Would Do In This Study
+
+Additional Info:
+1: These features are generally small and scattered across the fundus, often requiring precise spatial context for effective detection.
+Microaneurysms: Tiny, circular abnormalities in blood vessels that are often the first sign of diabetic retinopathy. Hard Exudates: Circular or slightly irregular lesions caused by lipid leakage. Their detection helps assess disease severity.
+
+Overview: Vessel Tortuosity: Curved or irregular blood vessels, indicative of diseases like hypertension.
+	•	Branching Patterns: Changes in vessel branching may indicate glaucoma or diabetic retinopathy.
+	•	Vessel Thickness: Thicker or thinner vessels can indicate vascular diseases.
 
 
+Square Benefits: Circular Features: Microaneurysms (3-5 pixels in diameter) are captured symmetrically, regardless of their orientation. Filters detect edges and boundaries efficiently due to the isotropic nature of the patch. Uniform Context: Surrounding textures, like the curvature of blood vessels near a microaneurysm, are preserved. This helps models differentiate microaneurysms from similar-looking artifacts.
+
+Slide 4: Example + Research Cont
+
+SLide info:
+
+Rectangle Issues - more prevalent than squares
+Rectangular patches emphasize one dimension over the other (e.g., width over height for 128 x  256)
+Circular Features (Microaneurysms): These features might appear elongated along the longer dimension, leading to inaccurate feature representation.
+A square filter applied to a rectangular patch will slide unevenly along the height and width.
+Height (128 pixels): Fewer filter applications, potentially missing subtle vertical patterns.
+Width (256 pixels): More filter applications, overemphasizing horizontal patterns.
+Result: The feature map might highlight horizontal edges more strongly than vertical ones, introducing a bias that distorts microaneurysm representation.
+Not a ton of downsides to square patching
+Studies Interesting Strategy
+Instead of using fixed square patches, the researchers introduced a non-fixed-size horizontal and vertical patch division strategy.
+Horizontal patches were used to capture elongated structures like blood vessels that extend horizontally
+Potential concern: Blood vessels might lose their proportional relationship to the microaneurysms, confusing the model during classification.
+Vertical patches helped in detecting features like hemorrhages, exudates, and the optic disc, which are distributed throughout the retina
+Retinal diseases like microaneurysms, hemorrhages, and exudates appear in various orientations.
+Dividing images into directional patches helped in isolating and analyzing different spatial patterns.
+DenseNet201-based feature extractor, followed by SVM classification, to determine whether an image contained signs of Diabetic Retinopathy
+
+
+Overall Conclusions:
+
+Square patch industry standard and more efficient. There are specific times we should use rectnagle patch like elongated blood vessels but this probably does not apply to our problem. Therefore we believe, unless the shareholders tell us differently, we should continue to use square patches.
+
+Main link used for research ex:
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9406859/
+
+Additional links used:
+https://www.mdpi.com/2075-4418/12/8/1975?
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5788045/
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8825816/
+https://arxiv.org/html/2411.01034v2?utm_source=chatgpt.com
+https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-017-1685-x?utm_source=chatgpt.com
 
 
