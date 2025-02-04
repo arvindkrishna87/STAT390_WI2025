@@ -1,12 +1,6 @@
-First, I asked about Eli's patching algorithm because I thought it could be helpful.
+I spent a lot of time this week was going through Eli's code to look at approach and how we can use his code to help us develop other aglorthms. I did a little presentation on Monday of his apporach, outlining discrepancies and helpful pieces. The ultimate outcome of this was to use the vectorized efficiency of Eli's method to help make Alyssa's code more efficient.
 
-On the website, I wrote out the tilting of patches alogrithms. This included a little bit about how Aryaman apporached tilting patches, 
-and the regression idea posed by Krish. I went through the pros and cons of each.
+I had put a lot of information about Eli's code on the webiste, but decided to pare it down just because Eli's code will be used primaily to help with alyssa's algorithm. It won't really do much for us on its own. I can provide the doc of work that I did on Eli's code.  
 
-When we presented Monday, we got many notes. After splitting up tasks, Olivia and I tag-teamed the automation page of the website. 
-I wrote the general overview of automation. I delved into Kyla's code -- its challenges and efficiencies. I posted on ED to see 
-what issues people were having. I also updated the epithelium detection section and made sure it reflected some of the issues that 
-happened with it last quarter. I also deleted the link to their API as it is not relevant to doctors right now. I added 
-some suggestions for improving the model. Finally, I wrote the conclusion of that page. 
+Next, I reorganized the patching step of the website. This involved restructuring the order of the page to make it more readable and logical. I also compiled all the questions we have been having to the bottom of the page. We are just waiting on the images of the three different methods to come back so we can add those to the top of that page. 
 
-For workflow, I came up with the idea of the contact sheet and made that sheet in the teams spreadsheet.
