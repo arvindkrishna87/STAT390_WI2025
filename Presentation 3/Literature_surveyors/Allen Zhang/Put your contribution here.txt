@@ -1,3 +1,3 @@
 Week 2:
 
-Conducted a literature review to address the question: "How do researchers determine the optimal number of patches?" This included creating a post on the QuPath forum, which received 1 response as of January 27. https://forum.image.sc/t/optimal-number-of-patches/107600
+Scoured forums and papers to answer the question: "3. How does having a large proportion of pixels as background in the image affect the CNN model's accuract to classify the image. Should we control the amount of background in our patches? This may reduce the number of patches." Also helped brainstorm a naive experiment to test whether decreasing the amount of background pixels helps improve CNN models.
