@@ -23,29 +23,3 @@ Organized and presented the relevant results from the study:
 -In conclusion, the study found that larger patch sizes generally resulted in better ability to identify retinal layers because they captured more of the surrounding tissue. For larger patches like 65x65, network architecture adjustments were necessary to handle the increased input size effectively, but smaller changes in patch size did not have a significant impact. This experiment may suggest that the notion of patch sizes in powers of 2 is effectively irrelevant.
 
 Also helped out on other slides throughout the slide deck.
-
-
-Presentation 3:
-
-Me, Jacob, and Allen were working together on question 3. At first, we tried to find answers through online resources. These were some of the sources I found that mention background effect on model accuracy in a variety of contexts:
-
-https://arxiv.org/html/2308.09764v2?utm_source=chatgpt.com
-
-https://www.researchgate.net/publication/354227288_Impacts_of_Background_Removal_on_Convolutional_Neural_Networks_for_Plant_Disease_Classification_In-Situ?utm_source=chatgpt.com
-
-https://www.researchgate.net/publication/372149906_CNN_stability_training_improves_robustness_to_scanner_and_IHC-based_image_variability_for_epithelium_segmentation_in_cervical_histology
-
-https://www.journals.infinite-science.de/index.php/automed/article/view/332/185
-
-https://arxiv.org/abs/2006.09994
-
-I analyzed all these articles looking for some sort of empirical evidence that could help us answer our question, but I was unsuccessful. They all focused only on removing or segmenting the background (turning the background or background images to all black), and since our image patches will already have a black background, these studies were irrelevant for our purposes.
-
-So, Jacob and I then decided to do our own experimentation to try to answer this question. To do this, we were going to test our own 4-layer neural network model on a control dataset and a dataset that is more zoomed in on the actual content (background areas cropped out). This would allow us to discern whether a change in the ratio of area-of-interest to background in an image affects the performance of our CNN model. 
-
-From a previous class, we found a nice dataset that had pictures of cats and non-cats, and we would test it with a model that should determine whether an image was of a cat or not. The next step was to find a way to change the background ratio for all the images in our dataset. This turned out to be somewhat of challenge, not only due to image format struggles, but also because most online tools we found were insufficient. I found one tool that seemed to be the most suitable, but it could not convert photos in large batches and the results were less than ideal. Finally, we developed our own piece of code that auto-cropped the area of interest for us, and that was helpful to create our new dataset.
-
-Additionally, we took a different approach where instead of cropping the images, we increased the black background ratio by adding black edges/corners around our original images. We also used our own piece of code to be able to automate this for a large batch of images.
-
-Then, we tested the different datasets with our models. We found that performance stayed relatively the same ~62% for all three types of data that it was trained and tested on. This was not the result we were expecting, and are now currently trying to figure out if there are mistakes we made in the model or the data that produced these results. It's also important to note that our experiment so far only tests the potential effect of more/less background, but not what percentage should the background be. My contributions and findings are described more specifically in slides 14-16 of presentation 3.
-
