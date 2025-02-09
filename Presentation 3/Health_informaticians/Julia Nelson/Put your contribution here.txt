@@ -7,4 +7,9 @@ If you did literature survey, then put it here as well.
 
 **Presentation #2** (Week 4)
 - Conducted literature review of characteristics of C-MIL
+- Conjunctival Melanocytic Lesions: https://doi.org/10.5858/arpa.2021-0006-RA
+- Immunohistochemical Profiling of Conjunctival Melanocytic Intraepithelial Lesions, Including SOX10, HMB45, Ki67, and P16: https://doi.org/10.1016/j.ajo.2020.09.033
+
+**Presentation #3** (Week 5)
+- Found examples of patterns of benign & malignant tissues in our data, along with Dila
 
