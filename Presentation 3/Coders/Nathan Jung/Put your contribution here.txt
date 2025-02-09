@@ -1,8 +1,0 @@
-The code is a modified version of Ryan's code. It looks at the second contour in the image, which is the inner contour in the best case scenario, calculates a vector to the closest point on the inner contour from the outer contour, and creates a square from that vector.
-
-I changed the logic for calculate_square_corners to involve the logic of only using the vector from the point on the outer contour to the point on the inner contour. Take one of the function still uses the tangent and only makes sure that the square is only created when the normal to the tangent line is in line with the line to the closest point on the inner contour. Take two of the function only looks at the vector from the outer contour to the closest point on the inner contour and just creates a square from that.
-
-I also changed the logic for removing overlap squares to instead look at the overlap within the mask created in the actual epithelium. The calculation for overlap was based on checking the logical and between the current mask and the square itself, and then dividing that overlap 
-by the square itself. If that overlap was more than the threshold, don't use the square, but if it was less then add that square to the current mask and move on to the next square.
-
-Right now it is slow, but that is due to the previously thought that I needed to use cv2.fillPoly to create solid squares to calculate overlap. Turns out you can use polygon from shapely to do the same thing.
