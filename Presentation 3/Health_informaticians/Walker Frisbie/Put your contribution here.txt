@@ -20,9 +20,13 @@ This was the closest article I could find relating to patching the epithelium an
 The other thing I would like to ensure is that segmentation is similar enough to patching. I looked up the differences and found that it was similar enough in the sense that segmentation focuses on particular regions whereas patching actually divides the regions for the model. But I want confirmation regarding this as well 
 
 
+LINK TO NOTES DOC: 
+
 Here is a link to the google doc with all my notes that I took this week regarding using the whole width of the epithelium:
 https://docs.google.com/document/d/1U1I8pneSgChWfao8fB1RdGlm0li208_dFOf4D7kYUQg/edit?usp=sharing
 
+
+ARTICLE REGARDING OED EPITHELIUM SEGMENTATION: 
 
 And finally, here is a link to the main article regarding image segmentation of the full epithelium to classify OED accurately:
 https://link.springer.com/chapter/10.1007/978-3-031-12053-4_27
@@ -31,6 +35,7 @@ https://link.springer.com/chapter/10.1007/978-3-031-12053-4_27
 If you did literature survey, then put it here as well.
 
 
+SOURCES: 
 Here are some sources that I used in my presentation given in class that I found helpful:
 
 1. Azarmehr, N., Shephard, A., Mahmood, H., Rajpoot, N., & Khurram, S. A. (2022, July 25). A neural architecture search based framework for segmentation of epithelium, nuclei and oral epithelial dysplasia grading. SpringerLink. https://link.springer.com/chapter/10.1007/978-3-031-12053-4_27
