@@ -4,3 +4,6 @@ If you wrote any code (python / QuPath / any other language), comment it well, a
 
 If you did literature survey, then put it here as well.
 
+# Presentation 2: I proposed two ideas based on paper1 and paper2, did a review on the key points mentioned in both of them. Based on the feedback, me and Julia looked at examples that verify the benignity of the patches. 
+
+# Presentation 3: Me and julia found some examples to be presented to the stakeholders.
