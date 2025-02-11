@@ -1,4 +1,2 @@
-I worked on updating the pages for step 3 and step 4 on the website – including aims, questions, images etc
-I updated Aryaman’s patching algorithm on the website so it better explains the methodology and removed the parts about epithelium detection.
-I also created the pros and cons table for Aryaman’s algorithm.
-I added the questions the lit surveyors are answering, including what they presented on Monday. I also added the questions the patching questions the thinkers are attempting to answer.
+I worked on the table to visualize the differences between the algorithms
+Rewrote certain parts of the 'patching' tab to be in bullet points, easier to understand
