@@ -1,8 +1,8 @@
-# Presentation 3 - Kota's patching code modifications
-### kotap3_patching_code.ipynb
+# Presentation 4 - Kota's patching code modifications
+### kotap4_patching_code.ipynb
 
-I use Anna's patching codebase as a base, which calculates the width of the epithelium utlizing numpy functions. I improve her base code by adding logic that determines orientation locally instead of globally. 
+The motivation for this week's work was combining the Coder's patching algorithm and the Thinker's epithelium width calculation into one. This would fix the iterative issue of the Coder's patching algorithm while still maintaining the tangent logic. By calculating the epithelium width along the normal line perpendicular to the tangent, we can create patches that inherently rotate according to the shape of the outer contour while also measuring the width accordingly. 
 
-The logic is very simple: 
-* The function `determine_orientation` remains exactly the same 
-* Instead of tinkering with the function itself, I apply a local mask around the balanced points of Alyssa's code. By applying a local mask to the point that we are patching, I can then call the `determine_orientation` function on the mask to determine orientation locally. 
+The main change I made was altering Ryan's `calculate_square_corners` function into `calculate_patch_corners`. It returns the output as his original code, but instead of running iteratively, it calculates the width of the epithelium using the points (and in turn the pixel values) found along the normal line. 
+
+This allows us to get rid of two parameters that the algorithm used to have: `step` and `square_size`. We no longer need these parameters as we already have the square size calculated and no longer need an iterative process. 
