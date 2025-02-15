@@ -1,0 +1,6 @@
+I spent a lot of time this week was going through Eli's code to look at approach and how we can use his code to help us develop other aglorthms. I did a little presentation on Monday of his apporach, outlining discrepancies and helpful pieces. The ultimate outcome of this was to use the vectorized efficiency of Eli's method to help make Alyssa's code more efficient.
+
+I had put a lot of information about Eli's code on the webiste, but decided to pare it down just because Eli's code will be used primaily to help with alyssa's algorithm. It won't really do much for us on its own. I can provide the doc of work that I did on Eli's code.  
+
+Next, I reorganized the patching step of the website. This involved restructuring the order of the page to make it more readable and logical. I also compiled all the questions we have been having to the bottom of the page. We are just waiting on the images of the three different methods to come back so we can add those to the top of that page. 
+

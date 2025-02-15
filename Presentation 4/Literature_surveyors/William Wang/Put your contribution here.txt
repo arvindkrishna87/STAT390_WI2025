@@ -1,0 +1,5 @@
+Dataset used: https://www.kaggle.com/datasets/vuppalaadithyasairam/ultrasound-breast-images-for-breast-cancer
+
+Place dataset in same working directory as notebook.
+
+Worked on analyzing why powers of 2 and how that works with powers of 3. Question 2.

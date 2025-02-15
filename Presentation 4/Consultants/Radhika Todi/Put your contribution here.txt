@@ -1,0 +1,2 @@
+I worked on the table to visualize the differences between the algorithms
+Rewrote certain parts of the 'patching' tab to be in bullet points, easier to understand

@@ -1,0 +1,9 @@
+Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
+
+If you wrote any code (python / QuPath / any other language), comment it well, and put it here, along with a Readme file describing the code. If the code is meant to be useful to other people, put instructions in the Readme file on how to use it. You will get extra credit if many people use your code!
+
+If you did literature survey, then put it here as well.
+
+# Presentation 2 - Looked for classification modeling and machine learning methods applied to research similar to our study. Found a concept known as the UDI (Ugly Duck Index), used in skin melanoma research.
+
+# Presentation 3 - Explored the concept of the UDI further and conducted literature review to understand the meaning of the ugly duck and how it could be applied to our particular project. Weighed the pros and cons of utilizing the index.

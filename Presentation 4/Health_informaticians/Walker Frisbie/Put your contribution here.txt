@@ -1,0 +1,48 @@
+Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
+
+This week I was tasked with looking at wheter or not we need the full width of the epithelium in our patches to ensure accurate classification. I started off looking at the distribution of melanocytes and trends within the epithelium that allow us to classify benign vs low grade vs high grade using the WHO 2022 classification system. This found that for benign and low grade (to a lesser extent) that you could see trends in only particular parts of the epithelium. However in order to classify high grade accurately and also see if it would move from low to high grade, you need the full width to identify trends. After looking at the patterns that would help us identify properly, I tried to find an article that used patching of the epithelium to classify. What I found was an article that looked at segmenting the entire epithelium and nuceli to look at OED (Oral Epithelial dysplasia) which is in the mouth. It found that the full epithelium allowed them to accurately classify and also see if the issue would become malignant and cancerous. This showcases that having the full width of the epithelium will allow us to ensure accurate classification of C-MIL. Although this is technically a pre cancerous issue they were looking at in their study, I think having the epithelium present and also the trends they were able to see regarding it becoming malignant are very applicable to our case and conneect over well. 
+
+Here is the rest of the summary of my work for this presenation that I have and some questions: 
+
+First part of research: 
+Looked at patterns within melanocytes for each level of C-MIL in classification
+Found that low grade and benign C-MIL were less likely to be spread out fully between layers but that high grade was spread in whole epithelium and that also to identify transition zones, you need the full width (Butt et al., 2024)
+
+Second part of research: 
+OED (Oral Epithelial dysplasia) segmentation and patching studies of full epithelium showed promising results in terms of accurately classifying the cancer
+Main study I looked at here found that when segmenting the whole width of the epithelium, all the features within the full epithelium are shown to be significantly associated with malignant transformation which is key because this showcases that the full width is needed to ensure that our model can identify these malignant trends that are occurring  (Azarmehr Et AL., 2022)
+
+Question becomes from this: 
+How generalizable is OED to our issue since it is a precancerous condition that is present in the epithelium cells in the mouth
+My thoughts is that it is fairly generalizable to our issue in the conjunctiva in the eye because that they found that the full epithelium trends were able to help in terms of identifying malignant cancers
+But I am also open to thoughts regarding this and whether or not it is actually transferable
+This was the closest article I could find relating to patching the epithelium and the impact of using the full epithelium 
+The other thing I would like to ensure is that segmentation is similar enough to patching. I looked up the differences and found that it was similar enough in the sense that segmentation focuses on particular regions whereas patching actually divides the regions for the model. But I want confirmation regarding this as well 
+
+
+LINK TO NOTES DOC: 
+
+Here is a link to the google doc with all my notes that I took this week regarding using the whole width of the epithelium:
+https://docs.google.com/document/d/1U1I8pneSgChWfao8fB1RdGlm0li208_dFOf4D7kYUQg/edit?usp=sharing
+
+
+ARTICLE REGARDING OED EPITHELIUM SEGMENTATION: 
+
+And finally, here is a link to the main article regarding image segmentation of the full epithelium to classify OED accurately:
+https://link.springer.com/chapter/10.1007/978-3-031-12053-4_27
+
+
+If you did literature survey, then put it here as well.
+
+
+SOURCES: 
+Here are some sources that I used in my presentation given in class that I found helpful:
+
+1. Azarmehr, N., Shephard, A., Mahmood, H., Rajpoot, N., & Khurram, S. A. (2022, July 25). A neural architecture search based framework for segmentation of epithelium, nuclei and oral epithelial dysplasia grading. SpringerLink. https://link.springer.com/chapter/10.1007/978-3-031-12053-4_27
+
+2. Butt, K., Hussain, R., Coupland, S. E., & Krishna, Y. (2024, September 10). Conjunctival melanoma: A clinical review and update. Cancers. https://pmc.ncbi.nlm.nih.gov/articles/PMC11429624/#:~:text=This%20comprised%3A%20(1)%20low,%2DMIN%20score%20%3E%205
+
+3. Shephard, A. J., Bashir, R. M. S., Mahmood, H., Jahanifar, M., Minhas, F., Raza, S. E. A., McCombe, K. D., Craig, S. G., James, J., Brooks, J., Nankivell, P., Mehanna, H., Khurram, S. A., & Rajpoot, N. M. (2024, June 28). A fully automated and explainable algorithm for predicting malignant transformation in oral epithelial dysplasia. Nature News. https://www.nature.com/articles/s41698-024-00624-8 
+
+4. Kenawy, N., Lake, S. L., Coupland, S. E., & Damato, B. E. (2013, February). Conjunctival melanoma and melanocytic intra-epithelial Neoplasia. Eye (London, England). https://pmc.ncbi.nlm.nih.gov/articles/PMC3574254/ 
+
