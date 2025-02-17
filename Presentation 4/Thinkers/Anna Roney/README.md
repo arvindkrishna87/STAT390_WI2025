@@ -1,25 +1,15 @@
-# Presentation 3 - Anna's patching code modifications
+# Presentation 4 - Modifications to Ryan's Contour_Normal_Toggleable Code
 
 
 ## Overview
 
-
-This folder contains the two edited versions of Alyssa's patching algorithm from presentation 2 and a new file called Anna_PatchingNoIteration. Go to the readme from presentation 2 to learn about the other two files.
-
-
-### Anna_PatchingNoIteration
+This folder contains an edited versions of Ryan's patching algorithm.
 
 
-This algorithm differs from Alyssa's because it no longer iterates patch size. Instead, it calculates the width of the epithelium and draws patches to match that width exactly (or be slightly larger if the user prefers).
+### Anna_Contour_Normal_Toggleable
 
+One issue with Ryan's algorithm is that for tissue slices with small unattached epithelium areas, the normal vector is sometimes drawn outward of the cell instead of inward (see patching presentation 4 for examples). This algorithm differs from Ryan's because it calculates each contour's centroid using cv2.moments and makes sure all normal vectors point towards the centroid.
 
-The first block of code is entirely the same as in the last presentation, which simply inputs an image of a mask and the tissue slice and returns a red mask with a white stroma and black background. We output the image of the epithelium in red instead of its original colored image to avoid any possible issues of white and black pixels in the epithelium being picked up by any of our algorithms.
+This code still determines the width of each patch iteratively. Look in Presentation 4/Thinkers/Kota Suzuki for a version of this code that determines patch width by calclating the epithelium. These two versions of Ryan's code should be combined as the next step.
 
-
-The second code block contains parts of Alyssa's algorithm but is mainly new. The major changes are in the function calculate_epithelium_width, which now utilizes the numpy function np.diff to understand where in the image sections of epithelium start and end.
-
-
-This code still determines orientation of the epithelium slice (horizontal or vertical) globally instead of locally. See Presentation 3/Thinkers/Kota Suzuki/kotap3_patching_code.ipynb for a versio of this code that determines orientation locally.
-
-
-This code currently takes 1 second to run, which is slightly longer than Alyssa's code. Optimizing this algorithm is a work in progress.
+Optimizing this entire algorithm to run faster is a work in progress.
