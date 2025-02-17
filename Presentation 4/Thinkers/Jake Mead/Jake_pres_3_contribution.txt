@@ -1,9 +1,0 @@
-- Worked on getting Aryaman's code (https://github.com/arvindkrishna87/STAT390_WI2025/blob/561c88bc59007dcc291c7b0aeab635ac954e12ef/past_code/Original_pipeline_aryaman.py)
-to run on cases 104 and 106. 
-
-- Code took approximately 2 hours to run on cases 104 (h2125906C) & 106 (h2134537) and the patching result didn't make sense. 
-
-- Aryaman guesses that the align function is taking a long time to run as the images aren't similar enough to each other, so the code is taking time rotating the images in 
-1 degree increments to find the best overlap.
-
-- I am now moving on from trying to use aspects of this patching algorithm in favor of trying to improve Ryan's code.
