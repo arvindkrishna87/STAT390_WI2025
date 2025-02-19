@@ -1,35 +1,18 @@
 Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
 
-This week I was tasked with looking at wheter or not we need the full width of the epithelium in our patches to ensure accurate classification. I started off looking at the distribution of melanocytes and trends within the epithelium that allow us to classify benign vs low grade vs high grade using the WHO 2022 classification system. This found that for benign and low grade (to a lesser extent) that you could see trends in only particular parts of the epithelium. However in order to classify high grade accurately and also see if it would move from low to high grade, you need the full width to identify trends. After looking at the patterns that would help us identify properly, I tried to find an article that used patching of the epithelium to classify. What I found was an article that looked at segmenting the entire epithelium and nuceli to look at OED (Oral Epithelial dysplasia) which is in the mouth. It found that the full epithelium allowed them to accurately classify and also see if the issue would become malignant and cancerous. This showcases that having the full width of the epithelium will allow us to ensure accurate classification of C-MIL. Although this is technically a pre cancerous issue they were looking at in their study, I think having the epithelium present and also the trends they were able to see regarding it becoming malignant are very applicable to our case and conneect over well. 
 
-Here is the rest of the summary of my work for this presenation that I have and some questions: 
+This week, I was tasked with looking at different more rare cases of C-MIL that involve inflammation of the cells. I looked at reserach to determine what defines inflammation, how is it identified clinically, and then how to properly identify it in our stains. I also attempted to analyze wheter inflammation can potentially lead to a low grade or high grade classification but unfortunately could not find much research related to that specific point. 
 
-First part of research: 
-Looked at patterns within melanocytes for each level of C-MIL in classification
-Found that low grade and benign C-MIL were less likely to be spread out fully between layers but that high grade was spread in whole epithelium and that also to identify transition zones, you need the full width (Butt et al., 2024)
+Throughout this week, I also watched the previous stakeholder meetings where Dr. Yamini Krishna discussed inflammation in C-MIL in specific cases to help me understand how to identify it properly. The main findings I found is that inflammation can appear as dark and red in the stroma and that it slowly eats at the epithelium. In the slide show, I showcases a couple examples from those video.
 
-Second part of research: 
-OED (Oral Epithelial dysplasia) segmentation and patching studies of full epithelium showed promising results in terms of accurately classifying the cancer
-Main study I looked at here found that when segmenting the whole width of the epithelium, all the features within the full epithelium are shown to be significantly associated with malignant transformation which is key because this showcases that the full width is needed to ensure that our model can identify these malignant trends that are occurring  (Azarmehr Et AL., 2022)
-
-Question becomes from this: 
-How generalizable is OED to our issue since it is a precancerous condition that is present in the epithelium cells in the mouth
-My thoughts is that it is fairly generalizable to our issue in the conjunctiva in the eye because that they found that the full epithelium trends were able to help in terms of identifying malignant cancers
-But I am also open to thoughts regarding this and whether or not it is actually transferable
-This was the closest article I could find relating to patching the epithelium and the impact of using the full epithelium 
-The other thing I would like to ensure is that segmentation is similar enough to patching. I looked up the differences and found that it was similar enough in the sense that segmentation focuses on particular regions whereas patching actually divides the regions for the model. But I want confirmation regarding this as well 
+The other interesting thing I found while researching inflammation is inflamed juvenile conjunctival nevu. This is a benign inflammatory condition in a region of the conjuctiva and is mostly present in children as well as adolescents. But what is interesting is that even though it is benign, it has takeaways for what to look for within C-MIL to help identify inflammation.
 
 
-LINK TO NOTES DOC: 
 
-Here is a link to the google doc with all my notes that I took this week regarding using the whole width of the epithelium:
-https://docs.google.com/document/d/1U1I8pneSgChWfao8fB1RdGlm0li208_dFOf4D7kYUQg/edit?usp=sharing
+HERE IS A LINK TO MY NOTES DOC FOR THE WEEK with more information regarding all of these topics about inflammation: 
 
+https://docs.google.com/document/d/1-5hUgzupqNOp7cl9ebNiTYnZlbRIv1nvFVanPe2LdYM/edit?usp=sharing
 
-ARTICLE REGARDING OED EPITHELIUM SEGMENTATION: 
-
-And finally, here is a link to the main article regarding image segmentation of the full epithelium to classify OED accurately:
-https://link.springer.com/chapter/10.1007/978-3-031-12053-4_27
 
 
 If you did literature survey, then put it here as well.
@@ -38,11 +21,13 @@ If you did literature survey, then put it here as well.
 SOURCES: 
 Here are some sources that I used in my presentation given in class that I found helpful:
 
-1. Azarmehr, N., Shephard, A., Mahmood, H., Rajpoot, N., & Khurram, S. A. (2022, July 25). A neural architecture search based framework for segmentation of epithelium, nuclei and oral epithelial dysplasia grading. SpringerLink. https://link.springer.com/chapter/10.1007/978-3-031-12053-4_27
+References
 
-2. Butt, K., Hussain, R., Coupland, S. E., & Krishna, Y. (2024, September 10). Conjunctival melanoma: A clinical review and update. Cancers. https://pmc.ncbi.nlm.nih.gov/articles/PMC11429624/#:~:text=This%20comprised%3A%20(1)%20low,%2DMIN%20score%20%3E%205
+1. Choi, E. K., & Chévez-Barrios, P. (2014, September 1). Inflamed Conjunctival Nevi: Histopathological criteria | Archives of Pathology & Laboratory Medicine. Archives of Pathology & Laboratory Medicine. https://meridian.allenpress.com/aplm/article/138/9/1242/204746/Inflamed-Conjunctival-Nevi-Histopathological 
 
-3. Shephard, A. J., Bashir, R. M. S., Mahmood, H., Jahanifar, M., Minhas, F., Raza, S. E. A., McCombe, K. D., Craig, S. G., James, J., Brooks, J., Nankivell, P., Mehanna, H., Khurram, S. A., & Rajpoot, N. M. (2024, June 28). A fully automated and explainable algorithm for predicting malignant transformation in oral epithelial dysplasia. Nature News. https://www.nature.com/articles/s41698-024-00624-8 
+2. Jakobiec, F. A., Colby, K., & Bajart, A. M. (2009, August). Immunohistochemical studies of atypical conjunctival melanocytic nevi | cancer biomarkers | jama ophthalmology | jama network. Jama Network. https://jamanetwork.com/journals/jamaophthalmology/fullarticle/423803
 
-4. Kenawy, N., Lake, S. L., Coupland, S. E., & Damato, B. E. (2013, February). Conjunctival melanoma and melanocytic intra-epithelial Neoplasia. Eye (London, England). https://pmc.ncbi.nlm.nih.gov/articles/PMC3574254/ 
+3. Mudhar, H. S. (2021, March 31). Melanocytic lesions of the conjunctiva. Diagnostic Histopathology. https://www.sciencedirect.com/science/article/pii/S175623171400187X?casa_token=2yW2luTZOWYAAAAA%3A-t47l22WCgParl3P0x_swxmes6eVPmpJKozyxorpTyeEq2pYfW37YJ-usv3AgGtc1ptE5KIS 
+
+4. Novais, G. A., Karp, C. L., Scott, I. U., & Fekrat, S. (2016, March 21). Diagnosis and management of conjunctival melanoma. American Academy of Ophthalmology. https://www.aao.org/eyenet/article/diagnosis-management-of-conjunctival-melanoma 
 
