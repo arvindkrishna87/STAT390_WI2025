@@ -1,0 +1,6 @@
+- Modified Kota's presentation 4 code (https://github.com/arvindkrishna87/STAT390_WI2025/blob/a25e7d99fdd6129242b6fd06d60f04ae49f7e8ce/Presentation%204/Thinkers/Kota%20Suzuki/kotap4_patching_code.ipynb)
+to add file selection for faster testing
+
+- Annotated and tested cases 102-106 h&e epitheliums
+
+- Tested these cases on his patching algorithm

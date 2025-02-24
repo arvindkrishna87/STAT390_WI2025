@@ -1,0 +1,3 @@
+For Wednesday, I primarily worked on adding the new page on the Classification Model. This included a brief summary at the top, as well as a detailed summary of key considerations when actually creating the model that the health informaticians suggested in their last presentation. 
+
+I also made some minor changes to the Automation page—specifically, creating specific names for some of the methods instead of just referring to them with the coder's name (e.g. "Cara's method") and also including what step in the process the methods/codes are for.

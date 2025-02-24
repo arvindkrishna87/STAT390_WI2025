@@ -1,0 +1,1 @@
+This week, I worked on condensing the pros and cons tables for Alyssa and Aryaman's algorithm into one table that could be read easily. It includes key features and whether or not each patching algorithm has this feature. Additionally, I cleaned up the description for Alyssa's algorithm and took care of the request that the Health Informaticians made on Ed. 

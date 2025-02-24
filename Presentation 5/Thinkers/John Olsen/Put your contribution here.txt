@@ -1,0 +1,16 @@
+While I spent some time assisting my teammates' (primarily Anna and Kota) efforts on refining Alyssa's algorithm, the bulk of my energy went toward theorizing a new algorithm for patching the epithelium. I mainly pursued this avenue because I felt Alyssa's algorithm was too complicated for the problem at hand, and thus, I believed a simpler solution was possible.
+
+I think I have come up with something that fits that billing, which I explain generally in the slides. I reframed the problem somewhat, using the imposed constraints to guide my approach. The algorithm is as follows:
+
+For a specified number of moves (default would be three) and a specified starting point (default is random):
+	Draw lines parallel with the x- and y-axes through that point to the edges of the epithelium (or until they hit an already patched region)
+	Move the point of interest to the midpoint of the shorter of those two lines
+Take the shorter line at the end of that loop to be the width of the epithelium, and based on its orientation, know whether squares should be drawn using that width as the right/left side or the top/bottom
+Draw those squares using the width to determine the size
+	Check the validity of the square: If it overlaps with an already patched region, no square can be drawn, if there is a corner still on the epithelium, the square needs to expand enough to get that corner outside of the epithelium
+Then check if new squares could be drawn bordering the sides of the previously drawn squares (If coverage would increase placing the same sized square down, then a new square should be drawn)
+For each of those candidates, take the midpoint of the side of the previously drawn square it would border, and go back to the start of the algorithm
+
+The algorithm stops once there are no more candidates for new squares, or there is a loop where no new squares are placed
+
+Feel free to ask questions, and I think this will also be easier to explain once it's implemented (if we decide to do so)
