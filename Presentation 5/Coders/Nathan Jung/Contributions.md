@@ -1,1 +1,1 @@
-For this week I went through questions for CNN
+Worked on the Alex Net model and trying to get higher accuracy with it.
