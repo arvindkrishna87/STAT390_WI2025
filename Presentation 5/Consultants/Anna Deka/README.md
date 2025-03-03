@@ -22,19 +22,20 @@ By making this change, I noticed that the Total Epithelium Coverage and Score Pe
 
 Within the for loop that computes the tangent vectors at each point along the contours of the binary mask. 
 
-for contour in contours:
 
-    contour_points = contour.reshape(-1,2)
-    num_contour_points = len(contour_points)
-    tangents = np.zeros_like(contour_points, dtype = float)
+    for contour in contours:
 
-    for i in range(num_contour_points):
+        contour_points = contour.reshape(-1,2)
+        num_contour_points = len(contour_points)
+        tangents = np.zeros_like(contour_points, dtype = float)
+
+        for i in range(num_contour_points):
         
-        prev_idx = (i - 1) % num_contour_points  # (NEW CHANGE)
-        next_idx = (i + 1) % num_contour_points  # (NEW CHANGE)
+            prev_idx = (i - 1) % num_contour_points  # (NEW CHANGE)
+            next_idx = (i + 1) % num_contour_points  # (NEW CHANGE)
         
-        tangent = contour_points[next_idx] - contour_points[prev_idx]
+            tangent = contour_points[next_idx] - contour_points[prev_idx]
         
-        tangent = tangent / (np.linalg.norm(tangent) + 1e-8)
-        tangents[i] = tangent            
+            tangent = tangent / (np.linalg.norm(tangent) + 1e-8)
+            tangents[i] = tangent            
 
