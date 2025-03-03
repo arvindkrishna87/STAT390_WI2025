@@ -9,6 +9,6 @@ https://github.com/arvindkrishna87/STAT390_WI2025/blob/532bc2c3a34526e72ce1ead25
 
 ### Jake_Patching_code_compact_export.ipynb
 
-* Modified add_padding() to make the padding the color of the background.
+* Modified add_padding() to make the padding the color of the tissue slice background.
 
 * Tested changes for different slices to ensure it could always identify the background color. Used MS Paint to create patches w/ > 50% tissue slice to further test.
