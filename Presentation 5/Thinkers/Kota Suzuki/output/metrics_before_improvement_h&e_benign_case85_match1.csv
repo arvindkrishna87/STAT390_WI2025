@@ -1,7 +1,7 @@
 Metric,Value
-total_epithelium_coverage,86.1006111377663
-background_pixel_percent,15.865442778429664
-score,85.7074003545271
+total_epithelium_coverage,0.0
+background_pixel_percent,0.0
+score,20.0
 extension_factor,1.1
 step_size,2.0
 max_width,2048.0
