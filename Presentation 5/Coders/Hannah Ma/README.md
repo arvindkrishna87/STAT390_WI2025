@@ -1,5 +1,4 @@
-This week I worked on debugging the contour selection function from my work last week (see `Presentation 3/Coders/Hannah Ma/Normal_Squares_Toggleable_hannah.ipynb`).
+This week I worked on a number of tasks supporting the other members of the CNN team:
+* During the work period on Wednesday I attempted to set up a Sharepoint script that would allow others to access the patches without having to manually download each patch when the class finishes patching. This unfortunately did not work out as the data on Sharepoint is not configured as a Sharepoint site, making it impossible to access via Microsoft Azure.
 
-A full description of my objective, approach, and code changes this week can be found in `Normal_Squares_Toggleable_hannah_wk4.ipynb`
-
-Supporting images, tissues slices used for testing, etc. can be found in the `/data` subdirectory.
+* I spent the rest of the week reading up on the various CNN architectures we are using and understanding how they work to better prepare for finetuning our models next week.
