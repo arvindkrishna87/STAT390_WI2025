@@ -1,0 +1,5 @@
+I tried using both my code (DenseNet121.ipynb) and modifying nathans code (DensNetMod.ipynb) to see the results of DenseNet. 
+
+Primary difference is Nathan's notebook freezes all layers except the calssifying layer. Mine trains DensNet on all the layers. We can see this leads to more overfitting in my 80/20 split. Based on this, I think Nathan's method of freezing all layers is better, especially with this small dataset we are using at the moment. 
+
+All in all, AlexNet seems to outperform DenseNet here anyways so we should pursue that one more. 
