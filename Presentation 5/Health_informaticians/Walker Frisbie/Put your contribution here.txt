@@ -1,33 +1,9 @@
 Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
 
-
-This week, I was tasked with looking at different more rare cases of C-MIL that involve inflammation of the cells. I looked at reserach to determine what defines inflammation, how is it identified clinically, and then how to properly identify it in our stains. I also attempted to analyze wheter inflammation can potentially lead to a low grade or high grade classification but unfortunately could not find much research related to that specific point. 
-
-Throughout this week, I also watched the previous stakeholder meetings where Dr. Yamini Krishna discussed inflammation in C-MIL in specific cases to help me understand how to identify it properly. The main findings I found is that inflammation can appear as dark and red in the stroma and that it slowly eats at the epithelium. In the slide show, I showcases a couple examples from those video.
-
-The other interesting thing I found while researching inflammation is inflamed juvenile conjunctival nevu. This is a benign inflammatory condition in a region of the conjuctiva and is mostly present in children as well as adolescents. But what is interesting is that even though it is benign, it has takeaways for what to look for within C-MIL to help identify inflammation.
-
-
-
-HERE IS A LINK TO MY NOTES DOC FOR THE WEEK with more information regarding all of these topics about inflammation: 
-
-https://docs.google.com/document/d/1-5hUgzupqNOp7cl9ebNiTYnZlbRIv1nvFVanPe2LdYM/edit?usp=sharing
+This week, my task was to see if I could find inflammation in the first 45 benign and high grade cases based on my research that I conducted for presentation 4 as well as what I learned from watching the lectures from the stakeholders last quarter. I classfied inflammation as either: not present, slightly present or a lot of inflammation present so that I coudl keep it consistent throughout all 45 cases I looked at. I also looked at each set of matches independently and classified each differently if there were multiple matches for a case. The work I did is present in the spreadsheet (under Walker's comments) and the link is  in the health informaticians upload presentation part of GITHUB. After analyzing for inflammation without seeing the ground truth of whether a case was benign or high grade, as a group we went through our findings to see if we could generalize if high grade meant a certain amount of inflammation or anything similar to that. This is so that for the model and in the future, we can help generalize what people invovled with project should be looking for. I believe that conducting this work for the remaining cases for presentation 6 will be helpful to allow us to see more of the trends that are occuring. 
 
 
 
 If you did literature survey, then put it here as well.
 
-
-SOURCES: 
-Here are some sources that I used in my presentation given in class that I found helpful:
-
-References
-
-1. Choi, E. K., & Chévez-Barrios, P. (2014, September 1). Inflamed Conjunctival Nevi: Histopathological criteria | Archives of Pathology & Laboratory Medicine. Archives of Pathology & Laboratory Medicine. https://meridian.allenpress.com/aplm/article/138/9/1242/204746/Inflamed-Conjunctival-Nevi-Histopathological 
-
-2. Jakobiec, F. A., Colby, K., & Bajart, A. M. (2009, August). Immunohistochemical studies of atypical conjunctival melanocytic nevi | cancer biomarkers | jama ophthalmology | jama network. Jama Network. https://jamanetwork.com/journals/jamaophthalmology/fullarticle/423803
-
-3. Mudhar, H. S. (2021, March 31). Melanocytic lesions of the conjunctiva. Diagnostic Histopathology. https://www.sciencedirect.com/science/article/pii/S175623171400187X?casa_token=2yW2luTZOWYAAAAA%3A-t47l22WCgParl3P0x_swxmes6eVPmpJKozyxorpTyeEq2pYfW37YJ-usv3AgGtc1ptE5KIS 
-
-4. Novais, G. A., Karp, C. L., Scott, I. U., & Fekrat, S. (2016, March 21). Diagnosis and management of conjunctival melanoma. American Academy of Ophthalmology. https://www.aao.org/eyenet/article/diagnosis-management-of-conjunctival-melanoma 
 

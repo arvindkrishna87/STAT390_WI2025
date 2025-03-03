@@ -5,4 +5,8 @@ This week I worked on removing the `smoothing_size` parameter and removing any l
 
 To remove any large/small patches without any ad-hoc parameters, I took Ryan's idea of using the area of the epithelium mask to eliminate any patches that fall outside of certain percentages of the area of the mask. 
 
-Implementing these two changes, the performance on the patch increased from roughly 94% -> 97% on case 85. 
+STILL WORK-IN-PROGRESS: trying to figure out how to handle patches that straddle two distinct regions of the epithelium. To get around this, I introduce two new functions: `sample_line_pixels` and `epithelium_to_background`. `sample_line_pixel` gets the pixel values along a start and end point. It is used to find the pixel values along the four sides of each patch. `eptihelium_to_background` checks to see whether these sides of the patches flag a pattern that reveals that a patch is straddling two distinct regions. This pattern is epithelium -> non-epithelium -> epithelium. 
+
+If this pattern is flagged, that patch is removed and replaced with a smaller patch 
+
+However, I still haven't figured out how to cover the rest of the region with more patches to cover for the large, removed patch. This means the performance is slightly worse with this functionality. 
