@@ -1,7 +1,7 @@
 Issue 1: multiple epithlial convolutions in one patch
 Issue 2: Extremely small patches (i.e. ones that look like dots)
 Issue 3: Sections of epithelium left out (small sections but I couldn't figure out why)
-Issue 4: In tissue slices with thicker epithelium, patches reached max_width and stopped tgus they were not capturing the width of the epithelium
+Issue 4: In tissue slices with thicker epithelium, patches reached max_width and stopped, they were not capturing the width of the epithelium
 
 I fixed issue 4
 Increased max_width from 2048 to 4200
