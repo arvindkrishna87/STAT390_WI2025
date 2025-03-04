@@ -1,0 +1,9 @@
+Issue 1: multiple epithlial convolutions in one patch
+Issue 2: Extremely small patches (i.e. ones that look like dots)
+Issue 3: Sections of epithelium left out (small sections but I couldn't figure out why)
+Issue 4: In tissue slices with thicker epithelium, patches reached max_width and stopped tgus they were not capturing the width of the epithelium
+
+I fixed issue 4
+Increased max_width from 2048 to 4200
+
+The results on other tissue slices were exactly the same, so increasing the max_width did not have any impact on tissue slices which did not have extremely thick epithelium. The only impacted slices were in Case 91 where the patches were reaching max width before. The patches obtained after the fix seem good.
