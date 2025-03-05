@@ -29,14 +29,11 @@ def calculate_tangents(contour_points, window_size=5):
 for contour in contours:
     contour_points = contour.reshape(-1, 2)
     tangents = calculate_tangents(contour_points, window_size=5)
-    
     normals = np.zeros_like(tangents)
     normals[:, 0] = -tangents[:, 1]
     normals[:, 1] = tangents[:, 0]
-    
     all_normals.append(normals)
     all_tangents.append(tangents)
-    
 all_patches = []
 all_patch_lengths = []
 height, width = epithelium_mask_2D.shape
