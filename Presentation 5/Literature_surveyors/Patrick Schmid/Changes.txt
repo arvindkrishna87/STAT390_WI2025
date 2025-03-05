@@ -1,0 +1,20 @@
+Filter Streamlining
+
+
+Improvements in This Approach:
+
+The updated function systematically reduces the number of patches while preserving coverage.
+
+1. Stricter Overlap Control (using polygon)
+
+Uses patch_overlap(polygon, Polygon(selected_patch)) > overlap_threshold to reject patches that overlap too much with already selected ones.
+
+2. Greedy Selection for Better Coverage
+
+Uses a greedy algorithm:
+Keeps the first patch in a contour (acts as an anchor).
+Each new patch is compared against previously selected patches.
+If it overlaps too much, it is discarded.
+This ensures better spatial distribution of patches.
+
+In an ideal world, this improves both patches and coverage during the filtering process
