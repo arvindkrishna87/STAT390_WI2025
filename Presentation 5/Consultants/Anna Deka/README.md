@@ -16,7 +16,7 @@ instead of skipping points by adding and subtracting `smoothing_size`.
 - I found the previous and next points dynamically by just adding and subtracting 1 instead
 - Deleted the `smoothing_size` parameter
 
-By making this change, I noticed that the Total Epithelium Coverage and Score Percentage increased for a majority of the slices, with almost all my slices reaching > 90% epithelium coverage. I did also notice, however, that the Background Pixel Percentage did tend to increase as well, but not by an unreasonable amount and in most cases the total score still increased regardless.
+By making this change, I noticed that the Total Epithelium Coverage and Score Percentage increased for a majority of the slices, with almost all my slices reaching > 90% epithelium coverage. I did also notice, however, that the Background Pixel Percentage did tend to increase as well, but not by an unreasonable amount and in most cases the total score still increased regardless. Finally, it did seem as though the tiny-dot issue was fixed for a lot of the slices, but it is unclear why based on my adjustment. 
 
 ## Update Location:
 
