@@ -1,0 +1,9 @@
+My improvements for presentation 5:
+
+The main issue I was coming across while initially patching was that parts of the epithelium - especially those where the epithelium curves or bends - were not being patched. The two solutions I implemented to try and improve my epithelium coverage are described below.
+
+1. Mask Reannotation: For certain cases (mentioned on spreadsheet), I found that making the mask annotation smoother could have a significant effect on the epithelium coverage and patch qualities. It seems that the patching algorithm works much better with smoother annotations. Therefore, for those slices that had a particularly low epithelium coverage, I reannotated their masks to make sure the annotations were as smooth as possible while still trying to maintain the accuracy of the mask in highlighting the epithelium region.
+
+2. Smoothing Size Adjustment: In the example/code we were given, 100 was chosen as the default smoothing size. However, due to the problems in epithelium coverage I was facing, it made sense to me that lowering the smoothing size would help. This is because the lower smoothing size leads to tangents that are made from closer/tighter points on the epithelium contour, which meant when the epithelium curved or made sharp turns, the patches would more likely capture more of the epithelium. I found that in most of my slices, this adjustment helped the patching results, with the exception of a few slices that were negatively affected due to the lower smoothing size causing bigger than necessary patches.
+
+Overall, I've concluded from my testing that a smaller smoothing size can be effective in making tighter patches and therefore capturing more of the epithelium along its path. More importantly, I've concluded that the way in which the mask is shaped has a significant impact on the epithelium coverage and patch qualities.
