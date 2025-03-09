@@ -6,8 +6,6 @@ The final patching algorithm should run smoothly as long as you have the followi
 2. A folder within that folder named `patch_outputs`
 3. Both your mask (.png) and tissue slice (.tif) in the format: `case_{case_number}_match_{match_number}_{h&e/melan/sox10}`
 
-This Final Patching Algorithm folder also contains the proper folder names/format and some sample outputs (not all of them because that's a lot of .png files to push) so that it's easier to follow along! 
-
 The final patching algorithm includes the following new features (since presentation 5): 
 * Ryan's Gaussian smoothing functionality for more optimal tangents (importantly eliminates `smoothing_size` as a parameter)
 * Anna's patch export functionality that allows all masks and tissue slices within the folder to be executed at once 
