@@ -1,6 +1,25 @@
 Put whatever you did here, except data files. Don't put any data files (tissue images) here, they are too large for github. You may indicate the data your code uses - provide the OneDrive link to that data, or just mention the path to it.
 
+I made used the patching code to get patches on all of my files. Moreover, I was able to fix the code so that the small dots dont happen anymore. 
+
 If you wrote any code (python / QuPath / any other language), comment it well, and put it here, along with a Readme file describing the code. If the code is meant to be useful to other people, put instructions in the Readme file on how to use it. You will get extra credit if many people use your code!
+
+##### Define a minimum patch length threshold
+min_patch_length = 8
+
+        #### Change:  Skip patches smaller than min pixels
+        if patch_length < min_patch_length:
+            continue  
+    ### Change: Iterate over actual patches, not contour points so that if countour points arnet generated it wont give error
+    ### counter_points contains all points but not every point makes a valid patch and causes "index out of range issue"
+    for i in range(len(all_patches[c])):  
+        current_patch = np.array(all_patches[c][i])  
+        current_patch_length = all_patch_lengths[c][i]
+
+        ### Change: Skip invalid patches by making sure it has 4 points (corners) and 2 values (x,y coordinates)
+        if current_patch.shape != (4, 2):  
+            continue  
+
 
 If you did literature survey, then put it here as well.
 
