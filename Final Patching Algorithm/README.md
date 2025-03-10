@@ -10,5 +10,6 @@ The final patching algorithm includes the following new features (since presenta
 * Ryan's Gaussian smoothing functionality for more optimal tangents (importantly eliminates `smoothing_size` as a parameter)
 * Anna's patch export functionality that allows all masks and tissue slices within the folder to be executed at once 
 * Sharon's `patching_export` functionality that outputs the original image + the mask with patches included 
-* John's epithelium-within-an-epithelium functionality in `get_contours` 
+* John's epithelium-within-an-epithelium functionality in `get_contours`
+* Jake's mask smoothing to help address the small patch problem
 
