@@ -1,4 +1,4 @@
-# Final Patching ALgorithm! 
+# Final Patching Algorithm! 
 ## final_patching_code.ipynb
 
 The final patching algorithm should run smoothly as long as you have the following folders:
