@@ -1,0 +1,281 @@
+Presentation 6 Coding Additions:
+
+mask_path = os.path.join("testing_slices", "case_026_match_3_melan.png")
+slice_path = os.path.join("testing_slices", "case_026_match_3_melan.tif")
+    
+if not os.path.exists(mask_path) or not os.path.exists(slice_path):
+    print("Error: Specified mask or slice file not found.")
+    
+# Read and preprocess the mask
+image1 = cv2.imread(mask_path)
+image1_gray = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
+_, whole_thresh1 = cv2.threshold(image1_gray, 240, 255, cv2.THRESH_BINARY_INV)
+    
+smoothed_binary = compute_smoothed_mask(whole_thresh1)
+    
+contours=get_contours(smoothed_binary)
+    
+if not contours:
+    print('No contours found')
+    
+contours = [contour.reshape(-1, 2).astype(np.float32) for contour in contours]
+
+# Compute sigma values for Gaussian smoothing
+sigmas = np.array([max(len(contour) // 90, 1) for contour in contours])  # Avoid sigma=0
+
+# Apply Gaussian smoothing to X and Y coordinates
+smoothed_contours = [
+    np.column_stack((gaussian_filter1d(contour[:, 0], sigma, mode='constant'),
+                        gaussian_filter1d(contour[:, 1], sigma, mode='constant')))
+    for contour, sigma in zip(contours, sigmas)
+]
+
+# Compute gradients (tangents)
+gradients = [np.gradient(contour, axis=0) for contour in smoothed_contours]
+
+# Normalize tangents to get unit tangent vectors
+tangent_units = [tangent / (np.linalg.norm(tangent, axis=1, keepdims=True) + 1e-8) for tangent in gradients]
+
+# Rotate tangents to get normals
+normals = [np.column_stack((-tangent[:, 1], tangent[:, 0])) for tangent in tangent_units]
+
+plt.figure(figsize=(10, 10))
+plt.imshow(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))  # Display mask image
+
+for contour, tangent, normal in zip(smoothed_contours, gradients, normals):
+    for i in range(0, len(contour), 10):  # Sample every 10th point to avoid clutter
+        x, y = contour[i]
+        tx, ty = tangent[i] * 20  # Scale for visibility
+        nx, ny = normal[i] * 20   # Scale for visibility
+
+        plt.arrow(x, y, tx, ty, color='green', head_width=5)   # Tangent in red
+        plt.arrow(x, y, nx, ny, color='black', head_width=5)  # Normal in blue
+
+plt.title("Tangents (Red) and Normals (Blue) on Mask Image")
+plt.axis("off")
+plt.show()
+
+
+patch_contour_index = 0  # if only one contour
+patch_point_index = 5    # CHANGE this to the actual index near the top small patch
+
+contour = smoothed_contours[patch_contour_index]
+normal = normals[patch_contour_index]
+tangent = gradients[patch_contour_index]
+
+x, y = contour[patch_point_index]
+tx, ty = tangent[patch_point_index] * 40  # Scale for visibility
+nx, ny = normal[patch_point_index] * 40   # Scale for visibility
+
+# ---- Plot the result ----
+plt.figure(figsize=(8, 8))
+plt.imshow(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))  # background mask
+plt.scatter(x, y, color='yellow', s=80, label="Patch center")
+plt.arrow(x, y, tx, ty, color='red', head_width=5, label='Tangent')
+plt.arrow(x, y, nx, ny, color='blue', head_width=5, label='Normal')
+plt.title("Tangent (Red) and Normal (Blue) at Small Patch")
+plt.axis("off")
+plt.legend()
+plt.show()
+
+plt.figure(figsize=(12, 12))
+plt.imshow(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))
+for i, pt in enumerate(smoothed_contours[0]):
+    if i % 10 == 0:
+        plt.text(pt[0], pt[1], str(i), color='cyan', fontsize=8)
+plt.title("Index of Each Contour Point")
+plt.axis("off")
+plt.show()
+
+from matplotlib.patches import Polygon as MplPolygon
+
+# Calculate patch corners at this point
+corners, patch_length = calculate_patch_corners(
+    contour[patch_point_index],
+    normal[patch_point_index],
+    smoothed_binary,
+    extension_factor=1.1
+)
+
+# Plot everything
+plt.figure(figsize=(8, 8))
+plt.imshow(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))
+plt.scatter(x, y, color='yellow', s=80, label="Patch Center")
+plt.arrow(x, y, tx, ty, color='red', head_width=5)
+plt.arrow(x, y, nx, ny, color='blue', head_width=5)
+
+# Add patch bounding box
+patch_poly = MplPolygon(corners, closed=True, edgecolor='lime', linewidth=2, fill=False)
+plt.gca().add_patch(patch_poly)
+
+plt.title("Patch Corners + Tangent/Normal at Small Patch")
+plt.axis("off")
+plt.legend()
+plt.show()
+
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon as MplPolygon
+
+plt.figure(figsize=(10, 10))
+plt.imshow(smoothed_binary, cmap='gray')
+
+for square_list, normal_list, contour in zip(final_squares, normals, contours):
+    contour = contour.reshape(-1, 2)
+    
+    for i, square in enumerate(square_list):
+        # Draw red patch box
+        patch_poly = MplPolygon(square, closed=True, edgecolor='red', linewidth=1.2, fill=False)
+        plt.gca().add_patch(patch_poly)
+
+        # Draw green normal arrow from patch center
+        center = np.mean(square, axis=0)
+        if i < len(normal_list):
+            norm_vec = normal_list[i] * 25  # Adjust scale as needed
+            plt.arrow(center[0], center[1], norm_vec[0], norm_vec[1], color='lime', head_width=4)
+
+plt.axis("off")
+plt.title("Patch Boxes (Red) + Normals (Green) on Epithelium Mask")
+plt.show()
+
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon as MplPolygon
+
+# Optional: display tissue image instead of mask
+background = cv2.cvtColor(cv2.imread(slice_path), cv2.COLOR_BGR2RGB)
+# background = smoothed_binary  # Use this instead if you want grayscale mask
+
+plt.figure(figsize=(10, 10))
+plt.imshow(background, cmap='gray' if isinstance(background, np.ndarray) and len(background.shape) == 2 else None)
+
+for square_list, normal_list, tangent_list, contour in zip(final_squares, normals, gradients, contours):
+    contour = contour.reshape(-1, 2)
+
+    for i, square in enumerate(square_list):
+        # Draw red patch box
+        patch_poly = MplPolygon(square, closed=True, edgecolor='red', linewidth=1.5, fill=False)
+        plt.gca().add_patch(patch_poly)
+
+        # Compute patch center
+        center = np.mean(square, axis=0)
+
+        # Draw normal (lime) and tangent (orange) from patch center
+        if i < len(normal_list):
+            norm_vec = normal_list[i] * 25
+            tan_vec = tangent_list[i] * 25
+
+            # Normal: greenish
+            plt.arrow(center[0], center[1], norm_vec[0], norm_vec[1],
+                      color='lime', head_width=4)
+
+            # Tangent: orange
+            plt.arrow(center[0], center[1], tan_vec[0], tan_vec[1],
+                      color='orange', head_width=4)
+
+plt.axis("off")
+plt.title("Patches (Red), Normals (Lime), Tangents (Orange)")
+plt.show()
+
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+
+def visualize_patch_normals(image_path, mask_path, contour_idx=0, point_idx=200):
+
+
+    """
+    Visualize a specific patch with its normal and tangent vectors to understand width issues.
+    
+    Args:
+        image_path: Path to the original image
+        mask_path: Path to the epithelium mask
+        contour_idx: Index of the contour to analyze
+        point_idx: Index of the point on the contour to analyze
+    """
+    # Load the image and mask
+    image = cv2.imread(image_path)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    
+    mask = cv2.imread(mask_path, 0)
+    _, binary_mask = cv2.threshold(mask, 240, 255, cv2.THRESH_BINARY_INV)
+    
+    # Apply mask smoothing
+    smoothed_mask = compute_smoothed_mask(binary_mask)
+    
+    # Get contours and normals
+    contours = get_contours(smoothed_mask)
+    normals = better_normals(contours, smoothed_mask)
+    
+    # Get the contour point and normal vector
+    contour = contours[contour_idx].reshape(-1, 2)
+    contour_point = contour[point_idx]
+    normal = normals[contour_idx][point_idx]
+    
+    # Calculate tangent (perpendicular to normal)
+    tangent = np.array([-normal[1], normal[0]])
+    
+    # Get the patch corners as calculated by the current algorithm
+    corners, patch_length = calculate_patch_corners(
+        contour_point, normal, smoothed_mask
+    )
+    
+    # Create visualization
+    fig, ax = plt.subplots(2, 1, figsize=(60, 60))
+    
+    # Plot original image with vectors
+    ax[0].imshow(image)
+    ax[0].set_title("Original Image with Vectors")
+    
+    # Plot contour point
+    ax[0].scatter(contour_point[0], contour_point[1], c='blue', s=100, label='Contour Point')
+    
+    # Vector scale for visibility
+    scale = 50
+    
+    # Plot normal vector
+    ax[0].arrow(contour_point[0], contour_point[1], 
+              normal[0] * scale, normal[1] * scale, 
+              head_width=5, head_length=10, fc='green', ec='green', label='Normal')
+    
+    # Plot tangent vector
+    ax[0].arrow(contour_point[0], contour_point[1], 
+              tangent[0] * scale, tangent[1] * scale, 
+              head_width=5, head_length=10, fc='magenta', ec='magenta', label='Tangent')
+    
+    # Plot the patch
+    patch_poly = plt.Polygon(corners, fill=False, edgecolor='red', linewidth=2, label='Patch')
+    ax[0].add_patch(patch_poly)
+    
+    # Plot search direction (current implementation - one way only)
+    max_length = 2048
+    step_size = 2
+    steps = np.arange(0, max_length, step_size)
+    search_points = np.clip(contour_point - steps[:, None] * normal, 0, [image.shape[1] - 1, image.shape[0] - 1]).astype(int)
+    ax[0].plot(search_points[:, 0], search_points[:, 1], 'y--', linewidth=2, label='Current Search Direction')
+    
+    # Plot what would be the opposite search direction
+    forward_points = np.clip(contour_point + steps[:, None] * normal, 0, [image.shape[1] - 1, image.shape[0] - 1]).astype(int)
+    ax[0].plot(forward_points[:, 0], forward_points[:, 1], 'c--', linewidth=2, label='Missing Search Direction')
+    
+    ax[0].legend()
+    
+    # Plot mask with the same information
+    ax[1].imshow(smoothed_mask, cmap='gray')
+    ax[1].set_title("Epithelium Mask with Search Directions")
+    ax[1].scatter(contour_point[0], contour_point[1], c='blue', s=100)
+    ax[1].arrow(contour_point[0], contour_point[1], normal[0] * scale, normal[1] * scale, 
+               head_width=5, head_length=10, fc='green', ec='green')
+    ax[1].arrow(contour_point[0], contour_point[1], tangent[0] * scale, tangent[1] * scale, 
+               head_width=5, head_length=10, fc='magenta', ec='magenta')
+    patch_poly = plt.Polygon(corners, fill=False, edgecolor='red', linewidth=2)
+    ax[1].add_patch(patch_poly)
+    ax[1].plot(search_points[:, 0], search_points[:, 1], 'y--', linewidth=2)
+    ax[1].plot(forward_points[:, 0], forward_points[:, 1], 'c--', linewidth=0.5)
+    
+    plt.tight_layout()
+    plt.show()
+
+# Example usage
+# Adjust these parameters to find the small patch at the top of the image
+image_path = 'testing_slices/case_026_match_3_melan.tif'  # Update with your path
+mask_path = 'testing_slices/case_026_match_3_melan.png'   # Update with your path
+visualize_patch_normals(image_path, mask_path, contour_idx=0, point_idx=20)
