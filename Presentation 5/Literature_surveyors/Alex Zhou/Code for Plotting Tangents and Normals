@@ -1,0 +1,55 @@
+mask_path = os.path.join("testing_slices", "case_39_match_1_h&e.png") #Replace with your mask
+slice_path = os.path.join("testing_slices", "case_39_match_1_h&e.tif") #Replace with your slice
+    
+if not os.path.exists(mask_path) or not os.path.exists(slice_path):
+    print("Error: Specified mask or slice file not found.")
+    
+# Read and preprocess the mask
+image1 = cv2.imread(mask_path)
+image1_gray = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
+_, whole_thresh1 = cv2.threshold(image1_gray, 240, 255, cv2.THRESH_BINARY_INV)
+    
+smoothed_binary = compute_smoothed_mask(whole_thresh1)
+    
+contours=get_contours(smoothed_binary)
+    
+if not contours:
+    print('No contours found')
+    
+contours = [contour.reshape(-1, 2).astype(np.float32) for contour in contours]
+
+# Compute sigma values for Gaussian smoothing
+sigmas = np.array([max(len(contour) // 90, 1) for contour in contours])  # Avoid sigma=0
+
+# Apply Gaussian smoothing to X and Y coordinates
+smoothed_contours = [
+    np.column_stack((gaussian_filter1d(contour[:, 0], sigma, mode='constant'),
+                        gaussian_filter1d(contour[:, 1], sigma, mode='constant')))
+    for contour, sigma in zip(contours, sigmas)
+]
+
+# Compute gradients (tangents)
+gradients = [np.gradient(contour, axis=0) for contour in smoothed_contours]
+
+# Normalize tangents to get unit tangent vectors
+tangent_units = [tangent / (np.linalg.norm(tangent, axis=1, keepdims=True) + 1e-8) for tangent in gradients]
+
+# Rotate tangents to get normals
+normals = [np.column_stack((-tangent[:, 1], tangent[:, 0])) for tangent in tangent_units]
+
+plt.figure(figsize=(10, 10))
+#plt.imshow(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))
+plt.imshow(smoothed_binary, cmap="gray") # Display mask image
+
+for contour, tangent, normal in zip(smoothed_contours, tangent_units, normals):
+    for i in range(0, len(contour), 10):  # Sample every 10th point to avoid clutter
+        x, y = contour[i]
+        tx, ty = tangent[i] * 50  # Scale for visibility
+        nx, ny = normal[i] * 50   # Scale for visibility
+
+        plt.arrow(x, y, tx, ty, color='green', head_width=10)   # Tangent in red
+        plt.arrow(x, y, nx, ny, color='red', head_width=10)  # Normal in blue
+
+plt.title("Tangents (Green) and Normals (Red) on Mask Image")
+plt.axis("off")
+plt.show()
