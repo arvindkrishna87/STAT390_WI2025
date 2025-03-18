@@ -1,0 +1,3 @@
+Case 39 (h211972)
+
+See my "Code for Plotting Tangents and Normals" along with my slides "Presentation 6". After plotting the tangents and normals, we can see that the tangents are not accurate to the direction of the contour, making the normals inaccurate as well. At certain curvatures of the mask, the wrong normal is causing the algorithm to go across the curvature, creating small patches that do not cover the epithelium width.
