@@ -1,10 +1,10 @@
 Presentation 6:
-I uploaded a link to my presentation 6 google slides.
+I uploaded a link to my presentation 6 google slides called Presentation 6 Presentation.
 
-I also uploaded the code I used to generate the images, tangents, and normals in presentation 6 under presentation 6 code.
-This code uses the structure of the final patching code we were given and then I added the code to generate the images, normals, and tangents to the middle of this document.
+I also uploaded the code I used to generate the images, tangents, and normals in presentation 6 under presentation_6_code.ipynb
+This code uses the structure of the final patching code we were given and then I added the code to generate the images, normals, and tangents to the middle of this code.
 
-I will also upload a file called Presentation 6 Coding Changes with just the code additions I made so it is easy to see
+I will also upload a file called Presentation 6 Raw Coding Additions with just the code additions I made so it is easy to see as a text file.
 
 
 Presentation 5:
