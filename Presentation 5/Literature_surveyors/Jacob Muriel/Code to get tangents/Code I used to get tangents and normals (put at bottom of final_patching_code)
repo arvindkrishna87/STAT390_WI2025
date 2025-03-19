@@ -1,0 +1,102 @@
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+
+def visualize_patch_normals(image_path, mask_path, contour_idx=0, point_idx=0):
+    """
+    Visualize a specific patch with its normal and tangent vectors to understand width issues.
+    
+    Args:
+        image_path: Path to the original image
+        mask_path: Path to the epithelium mask
+        contour_idx: Index of the contour to analyze
+        point_idx: Index of the point on the contour to analyze
+    """
+    # Load the image and mask
+    image = cv2.imread(image_path)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    
+    mask = cv2.imread(mask_path, 0)
+    _, binary_mask = cv2.threshold(mask, 240, 255, cv2.THRESH_BINARY_INV)
+    
+    # Apply mask smoothing
+    smoothed_mask = compute_smoothed_mask(binary_mask)
+    
+    # Get contours and normals
+    contours = get_contours(smoothed_mask)
+    normals = better_normals(contours, smoothed_mask)
+    
+    # Get the contour point and normal vector
+    contour = contours[contour_idx].reshape(-1, 2)
+    contour_point = contour[point_idx]
+    normal = normals[contour_idx][point_idx]
+    
+    # Calculate tangent (perpendicular to normal)
+    tangent = np.array([-normal[1], normal[0]])
+    
+    # Get the patch corners as calculated by the current algorithm
+    corners, patch_length = calculate_patch_corners(
+        contour_point, normal, smoothed_mask
+    )
+    
+    # Create visualization
+    fig, ax = plt.subplots(2, 1, figsize=(60, 60))
+    
+    # Plot original image with vectors
+    ax[0].imshow(image)
+    ax[0].set_title("Original Image with Vectors")
+    
+    # Plot contour point
+    ax[0].scatter(contour_point[0], contour_point[1], c='blue', s=100, label='Contour Point')
+    
+    # Vector scale for visibility
+    scale = 50
+    
+    # Plot normal vector
+    ax[0].arrow(contour_point[0], contour_point[1], 
+              normal[0] * scale, normal[1] * scale, 
+              head_width=10, head_length=10, fc='green', ec='green', label='Normal')
+    
+    # Plot tangent vector
+    ax[0].arrow(contour_point[0], contour_point[1], 
+              tangent[0] * scale, tangent[1] * scale, 
+              head_width=5, head_length=10, fc='magenta', ec='magenta', label='Tangent')
+    
+    # Plot the patch
+    patch_poly = plt.Polygon(corners, fill=False, edgecolor='red', linewidth=2, label='Patch')
+    ax[0].add_patch(patch_poly)
+    
+    # Plot search direction (current implementation - one way only)
+    max_length = 2048
+    step_size = 2
+    steps = np.arange(0, max_length, step_size)
+    search_points = np.clip(contour_point - steps[:, None] * normal, 0, [image.shape[1] - 1, image.shape[0] - 1]).astype(int)
+    ax[0].plot(search_points[:, 0], search_points[:, 1], 'y--', linewidth=3, label='Current Search Direction')
+    
+    # Plot what would be the opposite search direction
+    forward_points = np.clip(contour_point + steps[:, None] * normal, 0, [image.shape[1] - 1, image.shape[0] - 1]).astype(int)
+    # ax[0].plot(forward_points[:, 0], forward_points[:, 1], 'c--', linewidth=2, label='Missing Search Direction')
+    
+    ax[0].legend()
+    
+    # Plot mask with the same information
+    ax[1].imshow(smoothed_mask, cmap='gray')
+    ax[1].set_title("Epithelium Mask with Search Directions")
+    ax[1].scatter(contour_point[0], contour_point[1], c='blue', s=10)
+    ax[1].arrow(contour_point[0], contour_point[1], normal[0] * scale, normal[1] * scale, 
+               head_width=5, head_length=10, fc='green', ec='green')
+    ax[1].arrow(contour_point[0], contour_point[1], tangent[0] * scale, tangent[1] * scale, 
+               head_width=5, head_length=10, fc='magenta', ec='magenta')
+    patch_poly = plt.Polygon(corners, fill=False, edgecolor='red', linewidth=2)
+    ax[1].add_patch(patch_poly)
+    ax[1].plot(search_points[:, 0], search_points[:, 1], 'y--', linewidth=2)
+    # ax[1].plot(forward_points[:, 0], forward_points[:, 1], 'c--', linewidth=0.5)
+    
+    plt.tight_layout()
+    plt.show()
+
+# Example usage
+# Adjust these parameters to find the small patch at the top of the image
+image_path = 'testing_slices/case_046_match_1_h&e.tif'  # Update with your path
+mask_path = 'testing_slices/case_046_match_1_h&e.png'   # Update with your path
+visualize_patch_normals(image_path, mask_path, contour_idx=0, point_idx=10)
